@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/create', 'MessageController@create')->name('create')->middleware('auth');;
+Route::post('/store', 'MessageController@store')->name('store')->middleware('auth');;
+Route::get('/messages', 'MessageController@index')->name('index')->middleware('admin');;
