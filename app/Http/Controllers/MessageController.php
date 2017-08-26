@@ -54,7 +54,8 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect()->back()->with('message', 'IT WORKS!');
+        return response()->json(['message' => 'It works!']);
+        //return redirect()->back()->with('message', 'IT WORKS!');
 
     }
 
@@ -101,5 +102,10 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function get_captcha()
+    {
+      return response()->json(['captcha' => captcha_img()]);
     }
 }

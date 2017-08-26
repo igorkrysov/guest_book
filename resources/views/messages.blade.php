@@ -6,23 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <!-- Styles -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" language="javascript" src="{{ asset('js/jquery-1.12.4.js') }}"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js">
+      	</script>
+
+
     </head>
     <body>
         <div class="container">
             <div class="row">
-              <table class="table table-bordered table-striped">
-                <th>
-                  <td>dst</td>
-                  <td>mail</td>
-                  <td>created_at</td>
-                  <td>message</td>
-                </th>
+              <table  id='messages' class="DtatTable" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>dst</th>
+                    <th>mail</th>
+                    <th>created_at</th>
+                    <th>message</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach($messages as $message)
                   <tr>
                     <td>{{$loop->iteration}}</td>
@@ -32,6 +37,7 @@
                     <td>{{$message->message}}</td>
                   </tr>
                 @endforeach
+                <tbody>
               </table>
             </div>
             <div class="row">
@@ -39,4 +45,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ asset('js/messages.js') }}"></script>
 </html>
