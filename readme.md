@@ -3,3 +3,6 @@
 3. php artisan db:seed --class=GroupsTableSeede
 4. php artisan db:seed --class=UsersTableSeeder
 5. php artisan serve
+
+admin user: admin@domain.com
+pass: 123456Qw
