@@ -11,6 +11,9 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('app');
+// });
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,4 +26,5 @@ Route::get('/get_captcha', 'MessageController@get_captcha')->name('get_captcha')
 
 Route::get('/create', 'MessageController@create')->name('create')->middleware('auth');
 Route::post('/store', 'MessageController@store')->name('store')->middleware('auth');;
+Route::post('/load_file', 'MessageController@load_file')->name('load_file');
 Route::get('/messages', 'MessageController@index')->name('index')->middleware('admin');;

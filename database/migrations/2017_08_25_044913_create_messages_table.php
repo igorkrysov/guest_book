@@ -20,7 +20,7 @@ class CreateMessagesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('dst');
             $table->string('mail');
-            $table->string('message');
+            $table->text('message');
         });
     }
 

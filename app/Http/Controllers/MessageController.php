@@ -39,7 +39,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-          //  dd('sfds');;
         $this->validate($request, [
           'message' => 'required',
           'dst' => 'required',
@@ -51,12 +50,12 @@ class MessageController extends Controller
         $message->dst = $request->input('dst');
         $message->mail = $request->input('mail');
         $message->message = $request->input('message');
+        $message->origin_name = $request->input('origin_name');
+        $message->file_name = $request->input('file_name');
 
         $message->save();
 
-        return response()->json(['message' => 'It works!']);
-        //return redirect()->back()->with('message', 'IT WORKS!');
-
+        return response()->json(['message' => 'Message is send']);
     }
 
     /**
@@ -106,6 +105,18 @@ class MessageController extends Controller
 
     public function get_captcha()
     {
-      return response()->json(['captcha' => captcha_img()]);
+        return response()->json(['captcha' => captcha_img()]);
+    }
+
+    public function load_file(Request $request)
+    {
+        if ($request->hasFile('attach')) {
+            $filename = time().".".$request->file('attach')->getClientOriginalExtension();
+            $request->file('attach')->storeAs('public/', $filename);
+
+            return response()->json(['file_name' => $filename, 'oring_name' => $request->file('attach')->getClientOriginalName()]);
+        }
+        
+        return response()->json(['file_name' => 'error', 'oring_name' => 'sadfasdf']);
     }
 }
